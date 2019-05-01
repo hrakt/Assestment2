@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Main Page</title>
+
+
+    </head>
+    <body>
+        <h1>To Do List</h1>
+        <% if(list.length<=0){%>
+            <a>There is nothing in the list</a>
+        <%}else{%>
+        <ul>
+            <%list.forEach(function(entry,i) {%>
+            <a><%=entry.todo%>-<%if(entry.done=="false"){%>Not Done<%}%></a><a href="/delete/<%=i%>"><button>Delete</button></a></br>
+
+         <%})%>
+        <%}%>
+        <hr/>
+        <form action="/add" method="POST">
+            <input type="text" name="todo" > 
+            <input type="hidden" name="done"value="false">
+            <button type="submit">Add To Do</button>
+        </form>
+
+
+    </body>
+</html>
